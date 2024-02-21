@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+
+        ServerName $DOMAIN.maticz.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+
+        ErrorLog /error.log
+        CustomLog /access.log combined
+
+RewriteEngine on
+RewriteCond %{SERVER_NAME} =$DOMAIN.maticz.com
+RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
